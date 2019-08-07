@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchHello } from '../../actions/actions';
 
-class App extends Component {
+class Field extends Component {
 
     componentDidMount() {
         this.props.fetchHello('HELLO FROM componentDidMount()!')
@@ -27,4 +27,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(Field);
