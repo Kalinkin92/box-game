@@ -1,32 +1,14 @@
 import React from 'react';
+import { map } from '../lib';
+
 import {
     HELLO_WORLD
 } from '../actions/actions'
 
 const initialState = {
     msg: '',
-    fieldMap: [...new Array(8)].map((itemRow, indexRow) => {
-        return [...new Array(8)].map((item, index) => (
-            {
-                type: 'empty',
-                content: `${indexRow}.${index}`,
-                // template: <div className="cell">{index1}.{index2}</div>
-            })
-        )
-    })
+    fieldMap: map
 };
-
-/*
-    types
-
-    block
-    player
-    box
-    empty
-    target
-    none
-
- */
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {

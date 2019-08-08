@@ -4,6 +4,8 @@ import { fetchHello } from '../../actions/actions';
 import Field from '../field';
 import Header from '../header';
 
+import './app.css';
+
 class App extends Component {
 
     componentDidMount() {

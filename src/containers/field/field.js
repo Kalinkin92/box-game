@@ -1,34 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchHello } from '../../actions/actions';
+import { drawMap } from '../../lib';
 
 import './field.css';
 
-// let fieldMap = new Array(8);
-// fieldMap.fill([]);
-// const fieldMap = [...new Array(8)].map((item, index1) => {
-//     // item = new Array(8);
-//     // item.fill(<div className="cell"></div>);
-//     return (
-//         <div className="row">
-//             {[...new Array(8)].map((item, index2) => <div className="cell">{index1}.{index2}</div>)}
-//         </div>
-//
-//     )
-//     // item = item.ma
-// });
 
-const drawMap = (filedMap) => {
-    return [...filedMap].map((itemRow, indexRow) => {
-        return (
-            <div className="row" key={indexRow}>
-                {[...itemRow].map((item, index) => {
-                    return (<div className="cell" key={index}>{item.content}</div>)
-                })}
-            </div>
-        )
-    })
-};
 
 class Field extends Component {
 
@@ -38,7 +15,6 @@ class Field extends Component {
 
     render() {
         const { fieldMap } = this.props;
-        console.log(fieldMap);
 
         return (
             <div className="field">
