@@ -15,7 +15,6 @@ const reducer = (state = initialState, action) => {
     switch (action.type) {
         case PLAYER_MOVE:
             const {fieldMap, playerPosition} = action.payload;
-            console.log(`reducer`, playerPosition);
             return {
                 ...state,
                 fieldMap,

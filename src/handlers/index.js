@@ -1,19 +1,19 @@
 import { elements } from '../lib';
-import React, { Component } from 'react';
 
 const playerMoveHandler = ({fieldMap, playerPosition: {indexRow, index}, key}) => {
+    //считаем новую точку игрока
     const newPosition = getNewPosition({indexRow, index}, key, fieldMap.length - 1);
-    console.log(`playerMoveHandler`,newPosition);
-    if (checkNewPosition(fieldMap, newPosition)) {
-        //todo content: elements({indexRow, index}).empty заменить это говно
-        fieldMap[indexRow][index] = elements(`${indexRow}.${index}`).empty;
-        fieldMap[newPosition.indexRow][newPosition.index] = elements().player;
-        console.log(fieldMap);
-        return {fieldMap: fieldMap, playerPosition: newPosition};
-        // store.dispatch(playerMove({fieldMap: map, newPosition}));
-    } else {
-        return {fieldMap, playerPosition: {indexRow, index}}
-    }
+
+    //проверка новой точки игрока, на возможность перемещения
+    if (!checkNewPosition(fieldMap, newPosition)) return {fieldMap, playerPosition: {indexRow, index}};
+
+    // где был игрок рисуем пусто
+    fieldMap[indexRow][index] = elements(`${indexRow}.${index}`).empty;
+
+    // рисуем игрока в новой точке
+    fieldMap[newPosition.indexRow][newPosition.index] = elements().player;
+
+    return {fieldMap: fieldMap, playerPosition: newPosition};
 
 };
 
@@ -33,7 +33,6 @@ const getNewPosition = ({indexRow, index}, key, max) => {
 const checkNewPosition = (map, {indexRow, index}) => {
     switch (map[indexRow][index].type) {
         case 'empty': return true;
-        // case 'box': return true;
         default: return false
     }
 };
