@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchHello } from '../../actions/actions';
 
+import './header.css';
+
 class Field extends Component {
 
     componentDidMount() {
@@ -11,7 +13,7 @@ class Field extends Component {
     render() {
         return (
             <div className="header">
-                <h4>WELCOME TO THE GAME</h4>
+                {/*<h4>WELCOME TO THE GAME</h4>*/}
             </div>
         );
     };

@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-// import { connect } from 'react-redux';
-// import { fetchHello } from '../../actions/actions';
 import Field from '../field';
 import Header from '../header';
 
@@ -18,19 +16,5 @@ class App extends Component {
         );
     };
 }
-
-/*const mapStateToProps = (state) => {
-    const { msg } = state;
-    return {
-        msg
-    }
-};
-const mapDispatchToProps = (dispatch) => {
-    return {
-        fetchHello: (msg) => dispatch(fetchHello(msg))
-    }
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);*/
 
 export default App;

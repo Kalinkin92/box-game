@@ -1,7 +1,3 @@
-.cell {
-
-}
-
-.field {
-    display: flex;
+.header {
+    height: 40px;
 }
