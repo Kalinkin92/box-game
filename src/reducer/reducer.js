@@ -2,7 +2,6 @@ import React from 'react';
 import { map, playerPosition } from '../lib';
 
 import {
-    HELLO_WORLD,
     PLAYER_MOVE
 } from '../actions/actions'
 
@@ -14,13 +13,9 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case HELLO_WORLD:
-            return {
-                ...state,
-                msg: action.payload
-            };
         case PLAYER_MOVE:
             const {fieldMap, playerPosition} = action.payload;
+            console.log(`reducer`, playerPosition);
             return {
                 ...state,
                 fieldMap,

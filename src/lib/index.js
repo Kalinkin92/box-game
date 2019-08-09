@@ -12,12 +12,15 @@ const drawMap = (fieldMap) => {
 
 const elements = (payload) => ({
     player: {
+        type: 'player',
         content: <div className="player"></div>
     },
     block: {
+        type: 'block',
         content: <div className="block"></div>
     },
     target: {
+        type: 'target',
         content: <div className="target"></div>
     },
     box: {
@@ -25,6 +28,7 @@ const elements = (payload) => ({
         content: <div className="box"></div>
     },
     empty: {
+        type: 'empty',
         content: payload
     }
 });
@@ -58,11 +62,11 @@ let max = map.length - 1;
 
 // console.log(map);
 map[0] = map[0].map((itemRow, index) => ({type: 'block', content : <div className="block"></div>}));
-map[max] = map[max].map((itemRow, index) => ({type: 'block', content : <div className="block"></div>}));
-map = map.map((itemRow, index) => itemRow.map((item, index) => (index === 0 || index === max) ? ({type: 'block', content : <div className="block"></div>}) : item));
+// map[max] = map[max].map((itemRow, index) => ({type: 'block', content : <div className="block"></div>}));
+// map = map.map((itemRow, index) => itemRow.map((item, index) => (index === 0 || index === max) ? ({type: 'block', content : <div className="block"></div>}) : item));
 
 let playerPosition = checkPosition(map, getRandomPosition(max));
-map[playerPosition.indexRow][playerPosition.index] = ({type: 'player', content : <div className="player"></div>})
+map[playerPosition.indexRow][playerPosition.index] = elements().player;
 
 export {
     map,

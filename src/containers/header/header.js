@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { fetchHello } from '../../actions/actions';
 
 import './header.css';
 
-class Field extends Component {
+class Header extends Component {
 
     componentDidMount() {
-        this.props.fetchHello('HELLO FROM componentDidMount(1)!')
     }
 
     render() {
@@ -19,16 +16,4 @@ class Field extends Component {
     };
 }
 
-const mapStateToProps = (state) => {
-    const { msg } = state;
-    return {
-        msg
-    }
-};
-const mapDispatchToProps = (dispatch) => {
-    return {
-        fetchHello: (msg) => dispatch(fetchHello(msg))
-    }
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Field);
+export default Header

@@ -1,20 +1,15 @@
+import { playerMoveHandler } from '../handlers';
+
 const
-    HELLO_WORLD = 'HELLO_WORLD',
     PLAYER_MOVE = 'PLAYER_MOVE';
 
-const fetchHello = (msg) => ({
-    type: HELLO_WORLD,
-    payload: msg
-});
 
-const playerMove = ({fieldMap, playerPosition}) => ({
+const playerMove = ({fieldMap, playerPosition, key}) => ({
     type: PLAYER_MOVE,
-    payload: {fieldMap, playerPosition}
+    payload: playerMoveHandler({fieldMap, playerPosition, key})
 });
 
 export {
-    HELLO_WORLD,
     PLAYER_MOVE,
-    fetchHello,
     playerMove
 }

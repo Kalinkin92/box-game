@@ -1,21 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchHello } from '../../actions/actions';
+import { playerMove } from '../../actions/actions';
 import { drawMap } from '../../lib';
-import { playerMoveHandler } from '../../handlers';
 
 import './field.css';
 
 class Field extends Component {
 
     handleKeyPress({key}) {
-        const { fieldMap, playerPosition } = this.props;
+        const { fieldMap, playerPosition, playerMove } = this.props;
         // console.log(fieldMap, playerPosition )
-        playerMoveHandler(fieldMap, playerPosition, key);
+        playerMove({fieldMap, playerPosition, key});
     }
 
     componentDidMount() {
-        this.props.fetchHello('HELLO FROM componentDidMount(1)!')
+        // this.props.fetchHello('HELLO FROM componentDidMount(1)!')
     }
 
     render() {
@@ -38,7 +37,7 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchHello: (msg) => dispatch(fetchHello(msg))
+        playerMove: (data) => dispatch(playerMove(data))
     }
 };
 

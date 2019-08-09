@@ -1,15 +1,20 @@
-import store from '../store';
 import { elements } from '../lib';
-import { playerMove } from '../actions/actions';
+import React, { Component } from 'react';
 
-const playerMoveHandler = (map, {indexRow, index}, key) => {
-    const newPosition = getNewPosition({indexRow, index}, key, map.length - 1);
-    if (checkNewPosition(map, newPosition)) {
+const playerMoveHandler = ({fieldMap, playerPosition: {indexRow, index}, key}) => {
+    const newPosition = getNewPosition({indexRow, index}, key, fieldMap.length - 1);
+    console.log(`playerMoveHandler`,newPosition);
+    if (checkNewPosition(fieldMap, newPosition)) {
         //todo content: elements({indexRow, index}).empty заменить это говно
-        map[indexRow][index] = {type: 'empty', content: elements({indexRow, index}).empty};
-        map[newPosition.indexRow][newPosition.index] = elements().player;
-        store.dispatch(playerMove({fieldMap: map, newPosition}));
+        fieldMap[indexRow][index] = elements(`${indexRow}.${index}`).empty;
+        fieldMap[newPosition.indexRow][newPosition.index] = elements().player;
+        console.log(fieldMap);
+        return {fieldMap: fieldMap, playerPosition: newPosition};
+        // store.dispatch(playerMove({fieldMap: map, newPosition}));
+    } else {
+        return {fieldMap, playerPosition: {indexRow, index}}
     }
+
 };
 
 const getNewPosition = ({indexRow, index}, key, max) => {
@@ -20,7 +25,7 @@ const getNewPosition = ({indexRow, index}, key, max) => {
         case 'ArrowDown': return ({indexRow: inc(indexRow), index});
         case 'ArrowUp': return ({indexRow: dec(indexRow), index});
         case 'ArrowRight': return ({indexRow, index: inc(index)});
-        case 'ArrowLeft': return ({indexRow, index: inc(index)});
+        case 'ArrowLeft': return ({indexRow, index: dec(index)});
         default: return {indexRow, index};
     }
 };
