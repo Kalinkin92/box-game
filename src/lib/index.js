@@ -11,15 +11,18 @@ const drawMap = (fieldMap) => {
 };
 
 const elements = (payload) => ({
-    player: <div className="player"></div>,
+    player: {
+        content: <div className="player"></div>
+    },
     block: {
-        content: (<div className="block"></div>)
+        content: <div className="block"></div>
     },
     target: {
-        content: (<div className="target"></div>)
+        content: <div className="target"></div>
     },
     box: {
-        content: (<div className="box"></div>)
+        type: 'box',
+        content: <div className="box"></div>
     },
     empty: {
         content: payload
@@ -63,5 +66,6 @@ map[position.indexRow][position.index] = ({type: 'player', content : <div classN
 
 export {
     map,
-    drawMap
+    drawMap,
+    elements
 }
