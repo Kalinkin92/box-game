@@ -1,5 +1,5 @@
 import React from 'react';
-import { map } from '../lib';
+import { map, playerPosition } from '../lib';
 
 import {
     HELLO_WORLD,
@@ -9,10 +9,7 @@ import {
 const initialState = {
     msg: '',
     fieldMap: map,
-    playerPosition: {
-        indexRow: 3,
-        index: 4
-    }
+    playerPosition
 };
 
 const reducer = (state = initialState, action) => {

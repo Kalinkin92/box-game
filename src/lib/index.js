@@ -61,11 +61,12 @@ map[0] = map[0].map((itemRow, index) => ({type: 'block', content : <div classNam
 map[max] = map[max].map((itemRow, index) => ({type: 'block', content : <div className="block"></div>}));
 map = map.map((itemRow, index) => itemRow.map((item, index) => (index === 0 || index === max) ? ({type: 'block', content : <div className="block"></div>}) : item));
 
-let position = checkPosition(map, getRandomPosition(max));
-map[position.indexRow][position.index] = ({type: 'player', content : <div className="player"></div>})
+let playerPosition = checkPosition(map, getRandomPosition(max));
+map[playerPosition.indexRow][playerPosition.index] = ({type: 'player', content : <div className="player"></div>})
 
 export {
     map,
+    playerPosition,
     drawMap,
     elements
 }
